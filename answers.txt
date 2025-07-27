@@ -1,0 +1,42 @@
+# ANÁLISIS DEL PROYECTO DE MANUFACTURA - RESPUESTAS RESUMIDAS
+
+## 1. ¿Qué problema empresarial aborda su solución?
+El proyecto aborda la optimización de procesos manufactureros enfocándose en predecir paradas imprevistas, mejorar la eficiencia operacional, reducir unidades defectuosas, optimizar el consumo energético y implementar mantenimiento predictivo mediante análisis de correlaciones entre variables operacionales.
+
+## 2. ¿Qué variable están intentando predecir?
+La variable objetivo principal es `paradas_imprevistas` (interrupciones no planificadas del proceso), con análisis secundarios en `unidades_defectuosas` y `eficiencia_porcentual`, centrándose en el mantenimiento predictivo como aplicación crítica.
+
+## 3. ¿Qué tipo de empresa o sector imaginaron?
+Sector de manufactura industrial / Industria 4.0 con múltiples máquinas automatizadas, procesos de producción continua, operadores especializados, sistemas de monitoreo IoT y control de variables ambientales (temperatura, humedad, vibración).
+
+## 4. ¿De dónde se obtuvo el dataset? (proporcionado/simulado/fuente externa)
+El dataset fue **proporcionado** como parte del hackathon, evidenciado por el nombre `Dataset_Talento.csv` y la documentación que indica desarrollo "como parte de un hackathon enfocado en análisis de datos industriales y manufactura inteligente", sin referencias a fuentes externas.
+
+## 5. ¿Qué variables contiene?
+El dataset contiene 18 variables divididas en: 6 operacionales (temperatura, vibración, humedad, tiempo_ciclo, eficiencia_porcentual, consumo_energia), 5 de identificación (timestamp, turno, operador_id, maquina_id, producto_id), 4 de producción (cantidad_producida, unidades_defectuosas, paradas_programadas, paradas_imprevistas), 3 de diagnóstico (fallo_detectado, tipo_fallo, observaciones) y 5 temporales generadas (hour, day_of_week, day_of_month, month, minute).
+
+## 6. ¿Cuántos registros y columnas tiene? Versión cleaned y normal.
+Dataset original: 6,000 registros y 18 columnas con 3% de valores faltantes. Dataset limpio: 4,986 registros y 18 columnas (eliminación de 1,014 registros = 16.9% reducción) con 100% completitud en variables críticas.
+
+## 7. ¿Qué tipo de limpieza o preprocesamiento aplicaron?
+Implementaron eliminación selectiva de filas con valores faltantes en 6 variables críticas, corrección de anomalías (eficiencia >100%), enriquecimiento temporal extrayendo características del timestamp, y preservación de integridad manteniendo la estructura original, priorizando eliminación sobre imputación.
+
+## 8. ¿Qué algoritmo utilizaron? (Regresión lineal, árbol de decisión, etc)
+Utilizaron **análisis de correlaciones estadísticas** (Pearson, Spearman, Kendall) como método principal. NO implementaron algoritmos de machine learning predictivo como regresión lineal o árboles de decisión, enfocándose en análisis exploratorio de datos (EDA) para identificar correlaciones significativas.
+
+## 9. ¿Qué variable predijeron?
+**No realizaron predicción directa**. Se limitaron a análisis de correlaciones con `paradas_imprevistas` como variable objetivo principal y `unidades_defectuosas` como secundaria, identificando predictores potenciales y ranking de variables por poder predictivo como preparación para futuros modelos.
+
+## 10. ¿Cómo fue el rendimiento del modelo?
+No aplica ya que no implementaron modelo predictivo. El análisis de correlaciones mostró relaciones muy débiles (|r| < 0.2), con el mejor predictor siendo `cantidad_producida` (r = -0.018) para paradas imprevistas, indicando necesidad de métodos más avanzados y posibles relaciones no lineales.
+
+## 11. ¿Qué supuestos hicieron?
+Supusieron que 6 variables operacionales no pueden tener valores faltantes, la eficiencia no debe exceder 100%, existen relaciones causales entre variables operacionales e interrupciones, las paradas imprevistas son predecibles, y los sensores proporcionan datos confiables en un proceso operacionalmente estable.
+
+## 12. ¿Qué tipo de gráficos hicieron?
+Implementaron principalmente **mapas de calor de correlación (heatmaps)** para correlaciones de Pearson y Spearman con formato profesional, máscara triangular superior, esquema de colores RdBu_r, y exportación automática en alta resolución (300 DPI) con codificación base64 para documentación.
+
+---
+
+## RESUMEN EJECUTIVO
+Este proyecto representa un análisis exploratorio de datos (EDA) comprehensivo para manufactura industrial, enfocado en identificar patrones de correlación para predecir paradas imprevistas. Aunque no implementa modelos predictivos de machine learning, establece bases metodológicas sólidas para futuras implementaciones de mantenimiento predictivo mediante análisis estadístico profesional.
